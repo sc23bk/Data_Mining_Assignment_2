@@ -238,19 +238,19 @@ def question7():
     answer = {}
 
     # float
-    answer["a, info gain, ID"] = 0.
-    answer["b, info gain, Handedness"] = 0.
+    answer["a, info gain, ID"] = 1.0 
+    answer["b, info gain, Handedness"] = 0.531 #Information Gain=Entropy(S)−( 10/20 Entropy(Left)+ 10/20 Entropy(Right))
 
     # string: "ID" or "Handedness"
-    answer["c, which attrib"] = ""
+    answer["c, which attrib"] = "ID" #According to the principle of information gain in decision tree algorithms, the attribute that results in the highest information gain is chosen for the split. Therefore, ID would be chosen as the splitting attribute.
 
     # answer is a float
-    answer["d, gain ratio, ID"] = 0.
-    answer["e, gain ratio, Handedness"] = 0.
+    answer["d, gain ratio, ID"] = 0.2314 # gain ratio = info gain/ split info
+    answer["e, gain ratio, Handedness"] = 0.53100 
 
     # string: one of 'ID' or 'Handedness' based on gain ratio
     # choose the attribute with the largest gain ratio
-    answer["f, which attrib"] = ""
+    answer["f, which attrib"] = "Handedness"
 
     return answer
 

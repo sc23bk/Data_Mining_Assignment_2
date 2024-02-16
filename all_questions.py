@@ -40,7 +40,7 @@ def question1():
     level2_right["smoking"] = -1.0
     level2_right["smoking_info_gain"] = -1.0
 
-    level2_left["radon"] = -1.0
+    level2_left["radon"] = 1.0
     level2_left["radon_info_gain"] = 0.0
 
     level2_left["cough"] = 0.8812908992306927
@@ -72,7 +72,7 @@ def question1():
     B.insert_left("Yes")
     B.insert_right("No")
     tree.print_tree()
-
+    
     answer["tree"] = tree  # use the Tree structure
     # answer["training_error"] = training_error
     answer["training_error"] = 0.0  
@@ -88,14 +88,13 @@ def question2():
 
     # Answers are floats
     answer["(a) entropy_entire_data"] = 1.0
-
     # Infogain
-    answer["(b) x < 0.2"] = 0.46438561897747244
-    answer["(b) x < 0.7"] = 0.3602012209808308
-    answer["(b) y < 0.6"] = 0.44217935649972373
+    answer["(b) x <= 0.2"] = 0.46438561897747244
+    answer["(b) x <= 0.7"] = 0.3602012209808308
+    answer["(b) y <= 0.6"] = 0.44217935649972373
 
     # choose one of 'x=0.2', 'x=0.7', or 'x=0.6'
-    answer["(c) attribute"] = "x = 0.7"
+    answer["(c) attribute"] = "x = 0.7"  
 
     # Use the Binary Tree structure to construct the tree
     # Answer is an instance of BinaryTree

@@ -207,9 +207,9 @@ def question5():
 
     # string: one of 'Model 1' or 'Model 2'
     explain["b"] = "Model 2"
-    explain["b explain"] = ""
+    explain["b explain"] = "The measurements shown are only the means of the accuracy values from the two datasets. Model 2 is still more accurate when it comes to Dataset B, or the actual unseen data, even if both models were trained on Dataset A, so they will always get them correct."
 
-    explain["c similarity"] = ""
+    explain["c similarity"] = "Incorporation of Model Complexity"
     explain["c similarity explain"] = ""
 
     explain["c difference"] = ""

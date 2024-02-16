@@ -23,54 +23,68 @@ def question1():
     level2_left = {}
     level2_right = {}
 
-    level1["smoking"] = 0.
-    level1["smoking_info_gain"] = 0.
+    level1["smoking"] = 1 #0.72
+    level1["smoking_info_gain"] = 0.2781
 
-    level1["cough"] = 0.
-    level1["cough_info_gain"] = 0.
+    level1["cough"] = -1 #0.97
+    level1["cough_info_gain"] = 0.0349
 
-    level1["radon"] = 0.
-    level1["radon_info_gain"] = 0.
+    level1["radon"] = -1 #0.76
+    level1["radon_info_gain"] = 0.2365
 
-    level1["weight_loss"] = 0.0
-    level1["weight_loss_info_gain"] = 0.
+    level1["weight_loss"] = -1 # 0.97
+    level1["weight_loss_info_gain"] = 0.029
 
-    level2_left["smoking"] = 0.
-    level2_left["smoking_info_gain"] = 0.
-    level2_right["smoking"] = 0.
-    level2_right["smoking_info_gain"] = 0.
+    level2_left["smoking"] = -1
+    level2_left["smoking_info_gain"] = -1
+    level2_right["smoking"] = -1
+    level2_right["smoking_info_gain"] = -1
 
-    level2_left["radon"] = 0.
-    level2_left["radon_info_gain"] = 0.
+    level2_left["radon"] = 1
+    level2_left["radon_info_gain"] = 0.7219
 
-    level2_left["cough"] = 0.
-    level2_left["cough_info_gain"] = 0.
+    level2_left["cough"] = -1
+    level2_left["cough_info_gain"] = 0.3219
 
-    level2_left["weight_loss"] = 0.
-    level2_left["weight_loss_info_gain"] = 0.
+    level2_left["weight_loss"] = -1
+    level2_left["weight_loss_info_gain"] = 0.171
 
-    level2_right["radon"] = 0.
-    level2_right["radon_info_gain"] = 0.
+    level2_right["radon"] = 1
+    level2_right["radon_info_gain"] = 0.7219
 
-    level2_right["cough"] = 0.
-    level2_right["cough_info_gain"] = 0.
+    level2_right["cough"] = -1
+    level2_right["cough_info_gain"] = 0.3219
 
-    level2_right["weight_loss"] = 0.
-    level2_right["weight_loss_info_gain"] = 0.
+    level2_right["weight_loss"] = -1
+    level2_right["weight_loss_info_gain"] = 0.171
 
     answer["level1"] = level1
     answer["level2_left"] = level2_left
     answer["level2_right"] = level2_right
 
-    # Fill up `construct_tree``
+    # Fill up construct_tree`
     # tree, training_error = construct_tree()
-    tree = u.BinaryTree("root")  # MUST STILL CREATE THE TREE *****
+    tree = u.BinaryTree("smoking == Yes")  # MUST STILL CREATE THE TREE *****
+    A = tree.insert_left("cough = Yes")
+    B = tree.insert_right("randon == Yes")
+    A.insert_left("y")
+    A.insert_left("y")
+    A.insert_left("y")
+    A.insert_left("y")
+    A.insert_left("n")
+    B.insert_left("y")
+    B.insert_right("n")
+    B.insert_right("n")
+    B.insert_right("n")
+    B.insert_right("n")
+    # tree, training_error = construct_tree
+    # tree = U.BinaryTree("root")
     answer["tree"] = tree  # use the Tree structure
     # answer["training_error"] = training_error
     answer["training_error"] = 0.0  
 
     return answer
-
+    
 
 # ----------------------------------------------------------------------
 
@@ -79,14 +93,14 @@ def question2():
     answer = {}
 
     # Answers are floats
-    answer["(a) entropy_entire_data"] = 0.
+    answer["(a) entropy_entire_data"] = 1.495
     # Infogain
-    answer["(b) x <= 0.2"] = 0.
-    answer["(b) x <= 0.7"] = 0.
-    answer["(b) y <= 0.6"] = 0.
+    answer["(b) x <= 0.2"] = 0.050
+    answer["(b) x <= 0.7"] = 0.736
+    answer["(b) y <= 0.6"] = 0.642
 
     # choose one of 'x=0.2', 'x=0.7', or 'x=0.6'
-    answer["(c) attribute"] = ""  
+    answer["(c) attribute"] = "x=0.2"  
 
     # Use the Binary Tree structure to construct the tree
     # Answer is an instance of BinaryTree
@@ -109,7 +123,7 @@ def question3():
     answer["(b) Gini, ID"] = 0.0
     answer["(c) Gini, Gender"] = 0.48
     answer["(d) Gini, Car type"] = 0.1625
-    answer["(e) Gini, Shirt type"] = 0.491
+    answer["(e) Gini, Shirt type"] = 0.4914
 
     answer["(f) attr for splitting"] = "Car type"
 
@@ -152,7 +166,7 @@ def question4():
     answer["e"] = [discrete, qualitative, ordinal]
     answer["e: explain"] = "These awards don't measure the amount that separates the three main categories, which are naturally arranged according to achievement level."
 
-    answer["f"] = [dontinuous, quantitative, ratio]
+    answer["f"] = [continuous, quantitative, ratio]
     answer["f: explain"] = "Height can vary over a continuous range"
 
     answer["g"] = [discrete, quantitative, ratio)]
@@ -188,11 +202,11 @@ def question5():
     # Read appropriate section of book chapter 3
 
     # string: one of 'Model 1' or 'Model 2'
-    explain["a"] = ""
-    explain["a explain"] = ""
+    explain["a"] = "Model 2"
+    explain["a explain"] = "Model 2 better handles unknown data due to its increased testing accuracy. Model 1 looks overfitted given how much higher the training accuracy is than the testing accuracy."
 
     # string: one of 'Model 1' or 'Model 2'
-    explain["b"] = ""
+    explain["b"] = "Model 2"
     explain["b explain"] = ""
 
     explain["c similarity"] = ""

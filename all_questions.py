@@ -23,62 +23,56 @@ def question1():
     level2_left = {}
     level2_right = {}
 
-    level1["smoking"] = 1 #0.72
-    level1["smoking_info_gain"] = 0.2781
+    level1["smoking"] = 1.0
+    level1["smoking_info_gain"] = 0.2780719051126377
 
-    level1["cough"] = -1 #0.97
-    level1["cough_info_gain"] = 0.0349
+    level1["cough"] = -1.0
+    level1["cough_info_gain"] = -1.0
 
-    level1["radon"] = -1 #0.76
-    level1["radon_info_gain"] = 0.2365
+    level1["radon"] = -1.0
+    level1["radon_info_gain"] = -1.0
 
-    level1["weight_loss"] = -1 # 0.97
-    level1["weight_loss_info_gain"] = 0.029
+    level1["weight_loss"] = -1.0
+    level1["weight_loss_info_gain"] = -1.0
 
-    level2_left["smoking"] = -1
-    level2_left["smoking_info_gain"] = -1
-    level2_right["smoking"] = -1
-    level2_right["smoking_info_gain"] = -1
+    level2_left["smoking"] = -1.0
+    level2_left["smoking_info_gain"] = -1.0
+    level2_right["smoking"] = -1.0
+    level2_right["smoking_info_gain"] = -1.0
 
-    level2_left["radon"] = 1
-    level2_left["radon_info_gain"] = 0.7219
+    level2_left["radon"] = -1.0
+    level2_left["radon_info_gain"] = 0.0
 
-    level2_left["cough"] = -1
-    level2_left["cough_info_gain"] = 0.3219
+    level2_left["cough"] = 0.8812908992306927
+    level2_left["cough_info_gain"] = 0.7219280948873623
 
-    level2_left["weight_loss"] = -1
-    level2_left["weight_loss_info_gain"] = 0.171
+    level2_left["weight_loss"] = -1.0
+    level2_left["weight_loss_info_gain"] = -1.0
 
-    level2_right["radon"] = 1
-    level2_right["radon_info_gain"] = 0.7219
+    level2_right["radon"] = 0.7219280948873623
+    level2_right["radon_info_gain"] = 0.7219280948873623
 
-    level2_right["cough"] = -1
-    level2_right["cough_info_gain"] = 0.3219
+    level2_right["cough"] = -1.0
+    level2_right["cough_info_gain"] = -1.0
 
-    level2_right["weight_loss"] = -1
-    level2_right["weight_loss_info_gain"] = 0.171
+    level2_right["weight_loss"] = -1.0
+    level2_right["weight_loss_info_gain"] = -1.0
 
     answer["level1"] = level1
     answer["level2_left"] = level2_left
     answer["level2_right"] = level2_right
 
-    # Fill up construct_tree`
+    # Fill up `construct_tree``
     # tree, training_error = construct_tree()
-    tree = u.BinaryTree("smoking == Yes")  # MUST STILL CREATE THE TREE *****
-    A = tree.insert_left("cough = Yes")
-    B = tree.insert_right("randon == Yes")
-    A.insert_left("y")
-    A.insert_left("y")
-    A.insert_left("y")
-    A.insert_left("y")
-    A.insert_left("n")
-    B.insert_left("y")
-    B.insert_right("n")
-    B.insert_right("n")
-    B.insert_right("n")
-    B.insert_right("n")
-    # tree, training_error = construct_tree
-    # tree = U.BinaryTree("root")
+    tree = u.BinaryTree("smoking")  # MUST STILL CREATE THE TREE *****
+    A = tree.insert_left("Chronic Cough")
+    B = tree.insert_right("Radon")
+    A.insert_left("Yes")
+    A.insert_right("No")
+    B.insert_left("Yes")
+    B.insert_right("No")
+    tree.print_tree()
+
     answer["tree"] = tree  # use the Tree structure
     # answer["training_error"] = training_error
     answer["training_error"] = 0.0  
@@ -93,18 +87,31 @@ def question2():
     answer = {}
 
     # Answers are floats
-    answer["(a) entropy_entire_data"] = 1.495
+    answer["(a) entropy_entire_data"] = 1.0
+
     # Infogain
-    answer["(b) x <= 0.2"] = 0.050
-    answer["(b) x <= 0.7"] = 0.736
-    answer["(b) y <= 0.6"] = 0.642
+    answer["(b) x < 0.2"] = 0.46438561897747244
+    answer["(b) x < 0.7"] = 0.3602012209808308
+    answer["(b) y < 0.6"] = 0.44217935649972373
 
     # choose one of 'x=0.2', 'x=0.7', or 'x=0.6'
-    answer["(c) attribute"] = "x=0.2"  
+    answer["(c) attribute"] = "x = 0.7"
 
     # Use the Binary Tree structure to construct the tree
     # Answer is an instance of BinaryTree
-    tree = u.BinaryTree("Root")
+    tree = u.BinaryTree("y = 0.7")
+    tree.insert_left("x=0.7")
+    tree.left.insert_left("B")
+    tree.left.insert_right("y=0.3")
+    tree.left.right.insert_left("A")
+    tree.left.right.insert_right("C")
+
+    tree.insert_right("x=0.2")
+    tree.right.insert_left("y=0.8")
+    tree.right.insert_right("A")
+    tree.right.left.insert_left("C")
+    tree.right.left.insert_right("B")
+    tree.print_tree()
     answer["(d) full decision tree"] = tree
 
     return answer
@@ -210,10 +217,10 @@ def question5():
     explain["b explain"] = "The measurements shown are only the means of the accuracy values from the two datasets. Model 2 is still more accurate when it comes to Dataset B, or the actual unseen data, even if both models were trained on Dataset A, so they will always get them correct."
 
     explain["c similarity"] = "Incorporation of Model Complexity"
-    explain["c similarity explain"] = ""
+    explain["c similarity explain"] = "Penalizing decision tree complexity is the aim of both MDL and pessimistic error estimation strategies. They aim to find a middle ground between the size or complexity of the tree and its capacity to match the training data, assuming that simpler models generalize better to unknown data."
 
-    explain["c difference"] = ""
-    explain["c difference explain"] = ""
+    explain["c difference"] = "Approach to Model Complexity"
+    explain["c difference explain"] = "The MDL Principle requires a trade-off between the model's fit to the data and its complexity, which is dictated by how long the description has to be in order to encapsulate the model. However, by adding a penalty factor that increases in complexity along with the decision tree (such as the number of leaf nodes), the Pessimistic Error Estimate directly modifies the error estimate of the tree."
 
     return explain
 
